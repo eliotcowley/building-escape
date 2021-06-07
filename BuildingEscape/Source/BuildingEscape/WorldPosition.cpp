@@ -25,6 +25,17 @@ void UWorldPosition::BeginPlay()
 		LogTemp,
 		Warning,
 		TEXT("This component is attached to: %s"), *ObjectName);
+
+	FVector ObjectPositionVec = GetOwner()->GetActorLocation();
+
+	FString ObjectPosition = FString::Printf(
+		TEXT("%s is at position X: %f, Y: %f, Z: %f"),
+		*ObjectName,
+		ObjectPositionVec.X,
+		ObjectPositionVec.Y,
+		ObjectPositionVec.Z);
+
+	UE_LOG(LogTemp, Warning, TEXT("%s"), *ObjectPosition);
 }
 
 
