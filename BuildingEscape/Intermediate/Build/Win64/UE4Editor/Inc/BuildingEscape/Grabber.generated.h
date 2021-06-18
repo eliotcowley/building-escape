@@ -58,7 +58,11 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UGrabber); \
 	DEFINE_DEFAULT_CONSTRUCTOR_CALL(UGrabber)
 
 
-#define BuildingEscape_Source_BuildingEscape_Grabber_h_16_PRIVATE_PROPERTY_OFFSET
+#define BuildingEscape_Source_BuildingEscape_Grabber_h_16_PRIVATE_PROPERTY_OFFSET \
+	FORCEINLINE static uint32 __PPO__PhysicsHandle() { return STRUCT_OFFSET(UGrabber, PhysicsHandle); } \
+	FORCEINLINE static uint32 __PPO__InputComponent() { return STRUCT_OFFSET(UGrabber, InputComponent); }
+
+
 #define BuildingEscape_Source_BuildingEscape_Grabber_h_13_PROLOG
 #define BuildingEscape_Source_BuildingEscape_Grabber_h_16_GENERATED_BODY_LEGACY \
 PRAGMA_DISABLE_DEPRECATION_WARNINGS \

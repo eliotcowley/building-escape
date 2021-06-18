@@ -7,6 +7,7 @@
 #include "Engine/TriggerVolume.h"
 #include "Engine/World.h"
 #include "GameFramework/PlayerController.h"
+#include "Components/AudioComponent.h"
 
 #include "OpenDoor.generated.h"
 
@@ -32,6 +33,9 @@ public:
 
 	void OpenDoor(float DeltaTime);
 	void CloseDoor(float DeltaTime);
+	float TotalMassOfActors() const;
+	void FindAudioComponent();
+	void FindPressurePlate();
 
 private:
 	float InitialYaw;
@@ -41,9 +45,8 @@ private:
 	float OpenAngle = 90.f;
 
 	UPROPERTY(EditAnywhere)
-	ATriggerVolume* PressurePlate;
+	ATriggerVolume *PressurePlate = nullptr;
 
-	AActor *ActorThatOpens;
 	float DoorLastOpened = 0.f;
 
 	UPROPERTY(EditAnywhere)
@@ -54,4 +57,14 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float DoorCloseSpeed = 5.f;
+
+	UPROPERTY(EditAnywhere)
+	float DoorOpenMass = 50.f;
+
+	UPROPERTY()
+	UAudioComponent* AudioComponent = nullptr;
+
+	// Tracks whether sound has been played
+	bool bDoorOpened = false;
+	bool bDoorClosed = true;
 };

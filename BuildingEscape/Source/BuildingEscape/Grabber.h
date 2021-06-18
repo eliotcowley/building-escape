@@ -28,12 +28,20 @@ protected:
 
 private:
 	float Reach = 100.f;
+
+	UPROPERTY()
 	UPhysicsHandleComponent* PhysicsHandle = nullptr;
+
+	UPROPERTY()
 	UInputComponent* InputComponent = nullptr;
+	
+	FVector LineTraceEnd;
+	FVector PlayerViewPointLocation;
 
 	void Grab();
 	void Release();
 	void FindPhysicsHandle();
 	void SetupInputComponent();
 	FHitResult GetFirstPhysicsBodyInReach() const;
+	void UpdateLineTraceEndAndPlayerViewPointLocation();
 };
